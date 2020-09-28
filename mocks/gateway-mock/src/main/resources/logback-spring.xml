@@ -1,0 +1,18 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender" queueSize="1024" neverBlock="true">
+        <appender-ref ref="CONSOLE"/>
+    </appender>
+
+    <springProfile name="!sentry">
+        <root level="INFO">
+            <appender-ref ref="ASYNC"/>
+        </root>
+    </springProfile>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+</configuration>

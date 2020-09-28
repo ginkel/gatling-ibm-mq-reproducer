@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  mq:
+    image: ibmcom/mq:${IBM_MQ_VERSION:-latest}
+    ports:
+      - 127.0.0.1:1414:1414
+      - 127.0.0.1:9443:9443
+    environment:
+      LICENSE: accept
+      MQ_ENABLE_METRICS: 'true'
+      MQ_QMGR_NAME: GW
+
+  gateway-mock:
+    build: .
+    environment:
+      IBM_MQ_CONNNAME: mq(1414)

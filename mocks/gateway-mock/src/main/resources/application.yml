@@ -1,0 +1,23 @@
+---
+spring:
+  profiles:
+    active:
+      - default
+
+gateway:
+  mq2http:
+    request-queue-name: DEV.QUEUE.1
+    default-reply-to-queue-name: DEV.QUEUE.2
+
+ibm:
+  mq:
+    queueManager: GW
+    channel: DEV.APP.SVRCONN
+    connName: localhost(1414)
+    user: app
+    pool:
+      maxConnections: 10
+
+logging:
+  level:
+    ROOT: error
