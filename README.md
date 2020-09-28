@@ -30,4 +30,4 @@ IBM MQ queue state can be inspected at: https://localhost:9443/ibmmq/console/#/m
 ![MQ Screenshot](img/mq-screenshot.png)
 
 Request queue: DEV.QUEUE.1 \
-Response queue: DEV.QUEUE.2
+Response queue: DEV.QUEUE.2 (will start accumulating messages)
