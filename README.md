@@ -1,10 +1,15 @@
 # Gatling MQ Reproducer
 
-To reproduce the issue, run 
+This is an SSCCE for the behavior documented at: https://groups.google.com/g/gatling/c/UauZXuqO0W0
+
+The test scenario is based on IBM MQ, the mock backend is implemented as a Spring Boot application. The scenario can be brought up via Docker Compose. The mock effectively just replies with the lowercase version of the message you put on the request queue.
+
+To reproduce the issue, run:
 
 ```
 docker-compose up
 <wait until build is finished and MQ is responding on HTTPS port 9443>
+./mvnw clean package
 ./mvnw -pl tests/gatling gatling:test
 ```
 
